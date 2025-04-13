@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "664427147454",
+    "project_id": "androidvizora-a65da",
+    "storage_bucket": "androidvizora-a65da.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664427147454:android:b0c5d0a235c0c1c234eeef",
+        "android_client_info": {
+          "package_name": "com.example.vizora"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALpx-HzkSm6NEZP7nT3UNMMStKbpxkJgo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

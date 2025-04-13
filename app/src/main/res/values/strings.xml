@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Vizora</string>
+    <string name="email">Email-cím</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="openRegistrationLabel">Nincs még fiókod? Regisztrálj!</string>
+    <string name="createAccount">Fiók létrehozása</string>
+    <string name="fullname">Teljes név</string>
+    <string name="passwordAgain">Jelszó újra</string>
+    <string name="register">Regisztráció</string>
+    <string name="cancel">Mégse</string>
+    <string name="passwordHint">Legalább 8 karakter</string>
+</resources>
