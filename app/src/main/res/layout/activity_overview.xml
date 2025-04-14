@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".OverviewActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_margin="16dp"
+        android:textSize="28sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Helló ...!" />
+
+    <Button
+        android:id="@+id/ButtonLogout"
+        android:layout_margin="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_toEndOf="@id/textView3"
+        android:text="Kijelentkezés"
+        android:onClick="logout" />
+
+    <Button
+        android:id="@+id/ButtonAdd"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@id/textView3"
+        android:text="Vízóra hozzáadása"
+        android:onClick="add" />
+</RelativeLayout>

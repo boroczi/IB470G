@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openOverview() {
         Intent intent = new Intent(this, OverviewActivity.class);
+        intent.putExtra("KEY", KEY);
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
