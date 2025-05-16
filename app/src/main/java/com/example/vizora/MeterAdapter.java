@@ -1,6 +1,7 @@
 package com.example.vizora;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> {
+    private static final int KEY = 4444;
     private ArrayList<Meter> itemList;
     private Context context;
     private int lastPosition = -1;
@@ -81,6 +83,15 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
                         MeterAdapter.this.itemList.remove(getAdapterPosition());
                         meters.document(documentId).delete();
                         MeterAdapter.this.notifyItemRemoved(getAdapterPosition());
+                    }
+            );
+
+            itemView.findViewById(R.id.modify).setOnClickListener(
+                    v -> {
+                        Intent intent = new Intent(context, ModifyActivity.class);
+                        intent.putExtra("KEY", KEY);
+                        intent.putExtra("ID", documentId);
+                        context.startActivity(intent);
                     }
             );
         }

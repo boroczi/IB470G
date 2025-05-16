@@ -51,11 +51,20 @@
             android:layout_centerHorizontal="true"/>
 
         <Button
-            android:id="@+id/save"
+            android:id="@+id/modify"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/deadline"
             android:text="@string/save_value"
+            android:layout_centerHorizontal="true"/>
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/modify"
+            android:text="@string/modositas"
             android:layout_centerHorizontal="true"/>
 
         <Button

@@ -104,7 +104,6 @@ public class OverviewActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AddActivity.class);
             intent.putExtra("KEY", KEY);
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
-            this.adapter.notifyDataSetChanged();
             return true;
         }
 
@@ -115,5 +114,4 @@ public class OverviewActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
     }
-
 }

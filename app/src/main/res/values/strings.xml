@@ -17,4 +17,7 @@
     <string name="jelenlegi_meroallas">Jelenlegi mérőállás</string>
     <string name="cim">Cím</string>
     <string name="rogzites">Rögzítés</string>
+    <string name="legutobbi">Legutóbbi mérőállás</string>
+    <string name="mentes">Mentés</string>
+    <string name="modositas">Módosítás</string>
 </resources>
