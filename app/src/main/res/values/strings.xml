@@ -14,4 +14,7 @@
     <string name="hozz_ad_s">Hozzáadás</string>
     <string name="item_delete">Mérő törlése</string>
     <string name="save_value">Mérőállás rögzítése</string>
+    <string name="jelenlegi_meroallas">Jelenlegi mérőállás</string>
+    <string name="cim">Cím</string>
+    <string name="rogzites">Rögzítés</string>
 </resources>

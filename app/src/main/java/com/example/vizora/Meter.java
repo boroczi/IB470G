@@ -21,6 +21,14 @@ public class Meter {
         this.deadline = deadline;
     }
 
+    public Meter(String owner, String address, float latestValue, Date latestDate, Date deadline) {
+        this.owner = owner;
+        this.address = address;
+        this.latestValue = latestValue;
+        this.latestDate = latestDate;
+        this.deadline = deadline;
+    }
+
     public String getDocumentId() {
         return documentId;
     }

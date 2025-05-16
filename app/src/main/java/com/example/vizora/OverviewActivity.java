@@ -1,5 +1,7 @@
 package com.example.vizora;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -99,7 +101,10 @@ public class OverviewActivity extends AppCompatActivity {
             finish();
             return true;
         } else if (item.getItemId() == R.id.add) {
-
+            Intent intent = new Intent(this, AddActivity.class);
+            intent.putExtra("KEY", KEY);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
+            this.adapter.notifyDataSetChanged();
             return true;
         }
 

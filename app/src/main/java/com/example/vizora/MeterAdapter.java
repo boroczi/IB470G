@@ -23,7 +23,6 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
     private Context context;
     private int lastPosition = -1;
     private FirebaseAuth mAuth;
-    private FirebaseUser user;
     private FirebaseFirestore firestore;
     private CollectionReference meters;
 
@@ -35,9 +34,6 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        this.mAuth = FirebaseAuth.getInstance();
-        this.user = mAuth.getCurrentUser();
-
         this.firestore = FirebaseFirestore.getInstance();
         this.meters = firestore.collection("items");
 
@@ -81,14 +77,11 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
             mDeadline = itemView.findViewById(R.id.deadline);
 
             itemView.findViewById(R.id.delete).setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                    v -> {
                         MeterAdapter.this.itemList.remove(getAdapterPosition());
                         meters.document(documentId).delete();
                         MeterAdapter.this.notifyItemRemoved(getAdapterPosition());
                     }
-                }
             );
         }
 
