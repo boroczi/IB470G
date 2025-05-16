@@ -12,4 +12,6 @@
     <string name="passwordHint">Legalább 8 karakter</string>
     <string name="logout">Kijelentkezés</string>
     <string name="hozz_ad_s">Hozzáadás</string>
+    <string name="item_delete">Mérő törlése</string>
+    <string name="save_value">Mérőállás rögzítése</string>
 </resources>
