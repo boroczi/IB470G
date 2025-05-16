@@ -11,12 +11,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
 
 public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> {
     private ArrayList<Meter> itemList;
     private Context context;
     private int lastPosition = -1;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private FirebaseFirestore firestore;
+    private CollectionReference meters;
 
     MeterAdapter(Context context, ArrayList<Meter> itemList) {
         this.itemList = itemList;
@@ -26,6 +35,12 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        this.mAuth = FirebaseAuth.getInstance();
+        this.user = mAuth.getCurrentUser();
+
+        this.firestore = FirebaseFirestore.getInstance();
+        this.meters = firestore.collection("items");
+
         return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.item, parent, false));
     }
 
@@ -43,36 +58,42 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return itemList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView mID;
+        private String documentId;
         private TextView mAddress;
         private TextView mLatestValue;
         private TextView mLatestDate;
         private TextView mDeadline;
 
+        public void setDocumentId(String id) {
+            this.documentId = id;
+        }
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mID = itemView.findViewById(R.id.id);
             mAddress = itemView.findViewById(R.id.address);
             mLatestValue = itemView.findViewById(R.id.latestValue);
             mLatestDate = itemView.findViewById(R.id.latestDate);
             mDeadline = itemView.findViewById(R.id.deadline);
 
-            itemView.findViewById(R.id.save).setOnClickListener(
+            itemView.findViewById(R.id.delete).setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        //TODO
+                        MeterAdapter.this.itemList.remove(getAdapterPosition());
+                        meters.document(documentId).delete();
+                        MeterAdapter.this.notifyItemRemoved(getAdapterPosition());
                     }
                 }
             );
         }
 
         public void bindTo(Meter currentItem) {
+            setDocumentId(currentItem.getDocumentId());
             mAddress.setText(currentItem.getAddress());
             mLatestValue.setText(String.valueOf(currentItem.getLatestValue()));
             mLatestDate.setText(currentItem.getLatestDate().toString());

@@ -3,6 +3,7 @@ package com.example.vizora;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -71,10 +72,11 @@ public class OverviewActivity extends AppCompatActivity {
     private void query() {
         this.itemList.clear();
 
-        this.meters.get().addOnSuccessListener(
+        this.meters.whereEqualTo("owner", user.getEmail()).get().addOnSuccessListener(
                 queryDocumentSnapshots -> {
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         Meter meter = document.toObject(Meter.class);
+                        meter.setDocumentId(document.getId());
                         this.itemList.add(meter);
                     }
                     this.adapter.notifyDataSetChanged();
@@ -108,4 +110,5 @@ public class OverviewActivity extends AppCompatActivity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
     }
+
 }

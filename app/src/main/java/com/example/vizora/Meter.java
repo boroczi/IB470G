@@ -3,7 +3,8 @@ package com.example.vizora;
 import java.util.Date;
 
 public class Meter {
-    //private String id;
+    private String documentId;
+    private String owner;
     private String address;
     private float latestValue;
     private Date latestDate;
@@ -11,15 +12,24 @@ public class Meter {
 
     public Meter() { }
 
-    public Meter(String address, float latestValue, Date latestDate, Date deadline) {
-        //this.id = id;
+    public Meter(String documentId, String owner, String address, float latestValue, Date latestDate, Date deadline) {
+        this.documentId = documentId;
+        this.owner = owner;
         this.address = address;
         this.latestValue = latestValue;
         this.latestDate = latestDate;
         this.deadline = deadline;
     }
 
-    //public String getId() { return id; }
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public String getOwner() { return owner; }
 
     public String getAddress() { return address; }
 
