@@ -10,4 +10,6 @@
     <string name="register">Regisztráció</string>
     <string name="cancel">Mégse</string>
     <string name="passwordHint">Legalább 8 karakter</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="hozz_ad_s">Hozzáadás</string>
 </resources>
