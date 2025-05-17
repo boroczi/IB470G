@@ -21,6 +21,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText email;
     private EditText password;
     private EditText passwordAgain;
+    private NotificationHandler notificationHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
         this.password = findViewById(R.id.EditTextPassword);
         this.passwordAgain = findViewById(R.id.EditTextPasswordAgain);
         this.mAuth = FirebaseAuth.getInstance();
+        this.notificationHandler = new NotificationHandler(this);
     }
 
     public void register(View view) {
@@ -81,6 +83,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 task -> {
                     if(task.isSuccessful()) {
                         Toast.makeText(RegistrationActivity.this, "Sikeres regisztráció!", Toast.LENGTH_SHORT).show();
+                        notificationHandler.send("Sikeres regisztráció! Jelentkezz be, hogy hozzáadd első mérődórád!");
                     } else {
                         Toast.makeText(RegistrationActivity.this, "Sikertelen regisztráció!", Toast.LENGTH_SHORT).show();
                     }
