@@ -1,5 +1,6 @@
 package com.example.vizora;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -16,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.time.YearMonth;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class AddActivity extends AppCompatActivity {
@@ -66,13 +69,23 @@ public class AddActivity extends AppCompatActivity {
             return;
         }
 
-        this.meters.add(new Meter(user.getEmail(), address, Float.parseFloat(latestValue), new Date(), new Date()))
+        java.time.LocalDate lastDayOfMonthLocalDate = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            lastDayOfMonthLocalDate = YearMonth.now().atEndOfMonth();
+        }
+
+        Date lastDayOfMonthDate = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            lastDayOfMonthDate = Date.from(lastDayOfMonthLocalDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        }
+
+        this.meters.add(new Meter(user.getEmail(), address, Float.parseFloat(latestValue), new Date(), lastDayOfMonthDate))
                 .addOnSuccessListener(
-                documentReference -> {
-                    Toast.makeText(AddActivity.this, "Sikeres hozzáadás!", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-        );
+                        documentReference -> {
+                            Toast.makeText(AddActivity.this, "Sikeres hozzáadás!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                );
     }
 
     public void cancel(View view) {

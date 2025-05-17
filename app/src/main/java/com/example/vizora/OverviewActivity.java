@@ -105,6 +105,9 @@ public class OverviewActivity extends AppCompatActivity {
             intent.putExtra("KEY", KEY);
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
             return true;
+        } else if (item.getItemId() == R.id.refresh) {
+            query();
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -113,5 +116,11 @@ public class OverviewActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        query();
     }
 }

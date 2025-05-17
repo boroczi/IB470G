@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModifyActivity">
+    tools:context=".AddRecordActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,50 +13,17 @@
         app:layout_constraintBottom_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/EditTextAddress"
+        android:id="@+id/EditTextRecord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:autofillHints="name"
-        android:hint="@string/cim"
+        android:hint="@string/jelenlegi_meroallas"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/TextViewLatestValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/legutobbi"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/EditTextAddress" />
-
-    <TextView
-        android:id="@+id/TextViewLatestDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/legutobbi"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextViewLatestValue" />
-
-    <TextView
-        android:id="@+id/TextViewDeadline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/legutobbi"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextViewLatestDate" />
 
     <Button
         android:id="@+id/ButtonSubmit"
@@ -64,7 +31,7 @@
         android:layout_height="wrap_content"
         android:onClick="modify"
         android:text="@string/mentes"
-        app:layout_constraintTop_toBottomOf="@id/TextViewDeadline"
+        app:layout_constraintTop_toBottomOf="@id/EditTextRecord"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
@@ -79,6 +46,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

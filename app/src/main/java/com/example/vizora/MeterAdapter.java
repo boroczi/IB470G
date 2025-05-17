@@ -94,6 +94,15 @@ public class MeterAdapter extends RecyclerView.Adapter<MeterAdapter.ViewHolder> 
                         context.startActivity(intent);
                     }
             );
+
+            itemView.findViewById(R.id.save).setOnClickListener(
+                    v -> {
+                        Intent intent = new Intent(context, AddRecordActivity.class);
+                        intent.putExtra("KEY", KEY);
+                        intent.putExtra("ID", documentId);
+                        context.startActivity(intent);
+                    }
+            );
         }
 
         public void bindTo(Meter currentItem) {
